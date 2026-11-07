@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Мини-приложение</title>
+  <!-- Официальный скрипт Telegram Mini Apps: даёт доступ к теме, имени и т.д. -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1 id="hello">Привет! 👋</h1>
+      <p class="subtitle">Калькулятор и погода — в одном месте</p>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="calc">🧮 Калькулятор</button>
+      <button class="tab" data-tab="weather">🌤️ Погода</button>
+    </nav>
+
+    <!-- ================= КАЛЬКУЛЯТОР ================= -->
+    <section id="tab-calc" class="panel active">
+      <div class="calc-display">
+        <div class="calc-expression" id="calc-expression">&nbsp;</div>
+        <div class="calc-result" id="calc-result">0</div>
+      </div>
+
+      <div class="calc-grid">
+        <button class="key key-func" data-key="C">C</button>
+        <button class="key key-func" data-key="back">⌫</button>
+        <button class="key key-func" data-key="(">(</button>
+        <button class="key key-func" data-key=")">)</button>
+
+        <button class="key" data-key="7">7</button>
+        <button class="key" data-key="8">8</button>
+        <button class="key" data-key="9">9</button>
+        <button class="key key-op" data-key="÷">÷</button>
+
+        <button class="key" data-key="4">4</button>
+        <button class="key" data-key="5">5</button>
+        <button class="key" data-key="6">6</button>
+        <button class="key key-op" data-key="×">×</button>
+
+        <button class="key" data-key="1">1</button>
+        <button class="key" data-key="2">2</button>
+        <button class="key" data-key="3">3</button>
+        <button class="key key-op" data-key="−">−</button>
+
+        <button class="key" data-key="0">0</button>
+        <button class="key" data-key=".">.</button>
+        <button class="key key-equals" data-key="=">=</button>
+        <button class="key key-op" data-key="+">+</button>
+      </div>
+
+      <p class="hint">Работают скобки и десятичные дроби. Пример: (2+3)×4</p>
+    </section>
+
+    <!-- ================= ПОГОДА ================= -->
+    <section id="tab-weather" class="panel">
+      <div class="weather-form">
+        <input
+          id="city-input"
+          class="city-input"
+          type="text"
+          placeholder="Город, например Москва"
+          autocomplete="off"
+        >
+        <button id="weather-btn" class="primary-btn">Узнать</button>
+      </div>
+
+      <div id="weather-status" class="weather-status"></div>
+
+      <div id="weather-card" class="weather-card hidden">
+        <div class="weather-city" id="w-city">—</div>
+        <div class="weather-main">
+          <div class="weather-emoji" id="w-emoji">🌤️</div>
+          <div class="weather-temp" id="w-temp">—</div>
+        </div>
+        <div class="weather-desc" id="w-desc">—</div>
+
+        <div class="weather-details">
+          <div class="detail">
+            <span class="detail-label">Ощущается</span>
+            <span id="w-feels">—</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Влажность</span>
+            <span id="w-humidity">—</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Ветер</span>
+            <span id="w-wind">—</span>
+          </div>
+        </div>
+
+        <div class="forecast" id="w-forecast"></div>
+      </div>
+
+      <p class="hint">Данные: Open-Meteo — бесплатно и без API-ключа 😊</p>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
